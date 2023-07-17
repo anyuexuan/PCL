@@ -1,6 +1,6 @@
 # Code for PCL
 
-Code for "Learning to Learn from Corrupted Data for Few-Shot Learning" in IJCAI 2023. 
+Code for "Learning to Learn from Corrupted Data for Few-Shot Learning" in IJCAI 2023.
 
 If you use the code in this repo for your work, please cite the following bib entries:
 
