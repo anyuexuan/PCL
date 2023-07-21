@@ -99,12 +99,12 @@ class xNoiseMetaTemplate(nn.Module):
         else:
             return acc_mean
 
-    def add_feature_noise(self, x):
+    def add_feature_noise(self, x, value=2.7):
         noise_mask = torch.from_numpy(
             np.random.uniform(0, 1, size=(x.shape[0], x.shape[1], 1, 1, 1)) < self.noise_rate).float()
         x_clean = (1 - noise_mask) * x
         x_noise = noise_mask * (
-                x * (1 - self.merge_rate) + np.random.uniform(-2.7, 2.7, size=x.shape) * self.merge_rate)
+                x * (1 - self.merge_rate) + np.random.uniform(-value, value, size=x.shape) * self.merge_rate)
         x = (x_clean + x_noise).float()
         return x
 
