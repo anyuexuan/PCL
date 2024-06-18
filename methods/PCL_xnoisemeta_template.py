@@ -20,6 +20,7 @@ class FiLM_original(nn.Module):
 
 
 # To reduce the consumption, we adopt a more efficient way
+# \hat{h}(\mathcal{S})=\mathcal{H}(\mathcal{S})+{\delta_1}\left(\texttt{ReLU} \left( {\delta_2}\left( h(\mathcal{S}) \right)\odot {h}(\mathcal{S})+{\delta_3}\left(h(\mathcal{S})\right)\right)\right)
 class FiLM(nn.Module):
     def __init__(self, n_in, n_hidden=100):
         super(FiLM, self).__init__()
