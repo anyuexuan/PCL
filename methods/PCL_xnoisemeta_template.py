@@ -5,20 +5,6 @@ from .xnoisemeta_template import xNoiseMetaTemplate
 from torch.nn.functional import cross_entropy
 
 
-class FiLM_original(nn.Module):
-    def __init__(self, n_in, n_hidden=100):
-        super(FiLM_original, self).__init__()
-        self.linear1 = nn.Linear(n_in, n_hidden)
-        self.bn = nn.BatchNorm1d(n_hidden)
-        self.f = nn.Linear(n_hidden, n_in)
-        self.h = nn.Linear(n_hidden, n_in)
-        self.linear2 = nn.Linear(n_in, n_in)
-
-    def forward(self, x):
-        xx = self.bn(self.linear1(torch.relu(x)))
-        return x + self.linear2(torch.relu((self.f(xx))) * x + self.h(xx))
-
-
 # To reduce the consumption, we adopt a more efficient way
 class FiLM(nn.Module):
     def __init__(self, n_in, n_hidden=100):
